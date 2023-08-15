@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { EditOutlined, DeleteOutlined, DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Input, Space, Button, Table, Col, Row, Modal, message, Tooltip } from 'antd';
-import { getBoxes } from '../../API';
-import { ButtonContainer } from '../../Styles';
 import { FormBoxes } from './FormBoxes';
+import TopButtons from '../TopButtons/TopButtons';
 
 const { Search } = Input;
 
@@ -132,24 +131,7 @@ export function RegistroCajas() {
   
   return (
     <div>
-       <div style={containerStyle}>
-            <Search style={searchStyle} placeholder="Buscar" />
-            <div style={buttonContainerStyle}>
-                <Button style={reportButtonStyle} type="default" icon={<DownloadOutlined />}>
-                  Reporte
-                </Button>
-                <Button
-                  style={newRecordButtonStyle}
-                  type="primary"
-                  icon={<PlusOutlined />}
-                  onClick={() => showModal('Crear Caja')}
-                >
-                 Nuevo registro
-                </Button>
-            </div>
-          </div>
-
-
+       <TopButtons onClick={() => showModal('Crear Caja')}/>
       <div>
         <Table rowKey={'id'}
           className="custom-table"
