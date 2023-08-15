@@ -1,13 +1,13 @@
 import React from 'react';
-import './Home.css';
+import '../Home.css';
 import { Layout } from 'antd';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { AppHeader } from './components/AppHeader';
-import { TopNav } from './components/TopNav';
-import { PageContent } from './components/PageContent';
-import { SideMenu } from './components/SideMenu';
-import { AppFooter } from './components/AppFooter';
+import { AppHeader } from './AppHeader';
+import { TopNav } from './TopNav';
+import { PageContent } from './PageContent';
+import { SideMenu } from './SideMenu';
+import { AppFooter } from './AppFooter';
 
 const { Content } = Layout;
 

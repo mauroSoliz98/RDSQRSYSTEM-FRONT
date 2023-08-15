@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { Input, Space, Button, Table, Modal, Tooltip } from 'antd'
 import {EditOutlined,DeleteOutlined,DownloadOutlined,PlusOutlined } from '@ant-design/icons';
-import { getProducts } from '../../API'
 const { Search } = Input;
 
 export function Elementos() {

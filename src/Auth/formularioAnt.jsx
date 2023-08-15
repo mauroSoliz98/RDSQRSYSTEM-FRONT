@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {Button,Form,Input, Typography, message} from 'antd'
 import imagenLogo from '../assets/Logo_company.jpeg'
 import './FormularioAnt.css'
-import { GoogleBtn } from './GoogleBtn'
 
 export function FormularioAnt({setUser}) {
   const [nombre,setNombre] = useState("")
@@ -55,7 +54,6 @@ export function FormularioAnt({setUser}) {
             <Input.Password placeholder='Enter password' onChange={handlePasswordChange}/>
           </Form.Item>
           <Button type='primary' htmlType='summit' block>Iniciar sesion</Button>
-          <GoogleBtn/>
           <Typography.Text style={{color:'#191970'}}>¿Has olvidado tu contrasña?</Typography.Text>
     </Form>  
       </div>
