@@ -11,6 +11,29 @@ export function RegistroCajas() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataSource, setDataSource] = useState([]);
   const [modalTitle, setModalTitle] = useState('');
+  const data = [
+    {
+      id: '1',
+      title: 'CB98',
+      ubication: 'A1-L2',
+      owner: 'Galindo Erika',
+      create_date: '15/08/2023',
+    },
+    {
+      id: '2',
+      title: 'CB23',
+      ubication: 'B2-L4',
+      owner: 'Brito Delgado Alan',
+      create_date: '15/08/2023',
+    },
+    {
+      id: '3',
+      title: 'CB03',
+      ubication: 'C5-L3',
+      owner: 'Gonzales Gabriel',
+      create_date: '15/08/2023',
+    },
+  ];
 
   // Define una función auxiliar para determinar si es un dispositivo móvil
   const isMobile = window.innerWidth <= 768;
@@ -31,17 +54,17 @@ export function RegistroCajas() {
     },
     {
       title: 'Ubicación',
-      dataIndex: 'discountedPrice',
+      dataIndex: 'ubication',
       responsive: ['sm'], // Esta columna se mostrará en dispositivos de tamaño md (escritorio) y superiores
     },
     {
       title: 'Propietario',
-      dataIndex: 'SAMSUMG',
+      dataIndex: 'owner',
       responsive: ['md'],
     },
     {
       title: 'Fecha de creación',
-      dataIndex: 'discountPercentage',
+      dataIndex: 'create_date',
       responsive: ['md'],
     },
     {
@@ -76,13 +99,6 @@ export function RegistroCajas() {
     );
   };
 
-  useEffect(() => {
-    setLoading(true);
-    getBoxes().then((res) => {
-      setDataSource(res.products);
-      setLoading(false);
-    });
-  }, []);
 
   const showModal = (title) => {
     setModalTitle(title);
@@ -137,7 +153,7 @@ export function RegistroCajas() {
           className="custom-table"
           loading={loading}
           columns={columns}
-          dataSource={dataSource}
+          dataSource={data}
           pagination={{
             pageSize: isMobile ? 5 : 10, 
           }}

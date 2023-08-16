@@ -8,6 +8,32 @@ export function Elementos() {
   const [dataSource, setDataSource] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableHeight, setTableHeight] = useState(0);
+  const data = [
+    {
+      id:'1',
+      title:'Smartphones',
+      description:'Celulares inteligentes de diversas marcas',
+      box:'C12',
+      owner:'Galindo Erika',
+      category:'Tecnologia'
+    },
+    {
+      id:'2',
+      title:'Tubos',
+      description:'Tubos de plastico',
+      box:'C23',
+      owner:'Brito Alan',
+      category:'Plomeria'
+    },
+    {
+      id:'3',
+      title:'Lamparas',
+      description:'Lamparas de dormitorio',
+      box:'C50',
+      owner:'Quito Esteban',
+      category:'Muebleria'
+    },
+  ]
 
 
   // Define una función auxiliar para determinar si es un dispositivo móvil
@@ -32,11 +58,11 @@ export function Elementos() {
     },
     {
       title:'Caja',
-      dataIndex:'stock'
+      dataIndex:'box'
     },
     {
       title:'Propietario',
-      dataIndex:'brand',
+      dataIndex:'owner',
       responsive: ['md'], 
     },
     {
@@ -75,13 +101,6 @@ export function Elementos() {
     );
   };
 
-  useEffect(() => {
-    setLoading(true)
-    getProducts().then(res=>{
-      setDataSource(res.products)
-      setLoading(false)
-    }) 
-  }, [])
   const showModal=()=>{
     setIsModalOpen(true);
   }
@@ -99,7 +118,7 @@ export function Elementos() {
         <Table rowKey={'id'}
           loading={loading}
           columns={columns}
-          dataSource={dataSource}
+          dataSource={data}
           pagination={{
             pageSize: isMobile ? 10 : 10, 
           }}

@@ -9,6 +9,32 @@ export function Usuarios() {
   const [loading, setLoading] = useState(false)
   const [dataSource, setDataSource] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const data = [
+    {
+      id: '1',
+      username: 'Egal92',
+      email: 'Egal92@gmail.com',
+      firstName: 'Erika',
+      lastName: 'Galindo',
+      roles: ['admin','devloper'],
+    },
+    {
+      id: '2',
+      username: 'Dalbri96',
+      email: 'Dalbri96@gmail.com',
+      firstName: 'Alan',
+      lastName: 'Brito',
+      roles: ['gerente'],
+    },
+    {
+      id: '3',
+      username: 'Esqui76',
+      email: 'Esqui76@gmail.com',
+      firstName: 'Esteban',
+      lastName: 'Quito',
+      roles: ['jefe de planta', 'encargado'],
+    },
+  ];
 
   // Define una función auxiliar para determinar si es un dispositivo móvil
   const isMobile = window.innerWidth <= 768;
@@ -42,19 +68,20 @@ export function Usuarios() {
     },
     {
       title:'Roles',
-      dataIndex:'eyeColor',
+      dataIndex:'roles',
       responsive: ['md'],
-      /*key: 'tags',
-      render: tags => (
-        <>
-          {tags.map(tag => {
-              <Tag color= 'blue' key={tag}>
-                {tag}
-              </Tag>
-           
-          })}
-        </>
-      ),*/
+      key: 'roles', 
+      render: (roles)=>{
+        return(
+          <>
+          {roles.map((rol)=>(
+            <Tag color='blue' key={rol}>
+              {rol}
+            </Tag>
+          ))}
+          </>
+        )
+      }
     },
     {
       title:'Acciones',
@@ -87,13 +114,6 @@ export function Usuarios() {
     );
   };
 
-  useEffect(() => {
-    setLoading(true)
-    getUsers().then(res=>{
-      setDataSource(res.users)
-      setLoading(false)
-    })
-  }, [])
   const showModal=()=>{
     setIsModalOpen(true);
   }
@@ -112,7 +132,7 @@ export function Usuarios() {
           className="custom-table"
           loading={loading}
           columns={columns}
-          dataSource={dataSource}
+          dataSource={data}
           pagination={{
             pageSize: isMobile ? 5 : 8, 
           }}
