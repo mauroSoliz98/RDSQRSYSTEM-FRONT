@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { Space, Button, Table, Modal, Tooltip } from 'antd'
 import {EditOutlined,DeleteOutlined} from '@ant-design/icons';
 import TopButtons from '../TopButtons/TopButtons';
+import { FormItems } from './FormItems';
 
 export function Elementos() {
   const [loading, setLoading] = useState(false)
@@ -131,7 +132,7 @@ export function Elementos() {
         />
       </div>
         <Modal title={modalTitle} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <h1>Hola mundo</h1>
+        <FormItems CancelButton={handleCancel}/>
       </Modal>
     </div>
   )

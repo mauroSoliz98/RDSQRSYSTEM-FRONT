@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import {Button,Form,Input, Typography, message} from 'antd'
 import imagenLogo from '../assets/Logo_company.jpeg'
 import './FormularioAnt.css'
+import {useNavigate} from 'react-router-dom'
 
 export function FormularioAnt({setUser}) {
   const [nombre,setNombre] = useState("")
   const [password,setPassword] = useState("")
+  const navigate = useNavigate()
   const handleNombreChange=(e)=>{
     setNombre(e.target.value)
   }
@@ -16,8 +18,8 @@ export function FormularioAnt({setUser}) {
     if(nombre==''|| password==''){
       message.warning('Please enter password or user')
     }
-    message.success('Login Succesful!!')
-
+    message.success('Login Succesful!!')  
+    navigate('/registro_cajas')
     setUser([nombre])
     
   }

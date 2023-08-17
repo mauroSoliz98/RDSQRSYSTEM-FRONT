@@ -3,6 +3,7 @@ import { Input, Space, Button, Table, Col, Row, Modal, Tooltip, Tag } from 'antd
 import {EditOutlined,DeleteOutlined,DownloadOutlined,PlusOutlined } from '@ant-design/icons';
 import { render } from 'react-dom';
 import TopButtons from '../TopButtons/TopButtons';
+import { FormUsers } from './FormUsers';
 const { Search } = Input;
 
 export function Usuarios() {
@@ -143,7 +144,7 @@ export function Usuarios() {
       </div>
 
         <Modal title={modalTitle} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <h1>Hola mundo</h1>
+        <FormUsers CancelButton={handleCancel}/>
       </Modal>
     </div>
   )
