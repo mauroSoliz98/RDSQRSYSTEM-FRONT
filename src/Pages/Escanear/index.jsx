@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import {Modal, Typography} from 'antd'
+import React, { useState, useEffect } from 'react';
+import { Modal, Typography } from 'antd';
 import {
-    BrowserMultiFormatReader,
-    NotFoundException,
-    ChecksumException,
-    FormatException,
-    DecodeHintType,
-    BarcodeFormat
-  } from "@zxing/library";
+  BrowserMultiFormatReader,
+  NotFoundException,
+  ChecksumException,
+  FormatException,
+  DecodeHintType,
+  BarcodeFormat
+} from "@zxing/library";
 
 export function Escanear() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +35,11 @@ export function Escanear() {
       .catch((err) => {
         console.error(err);
       });
+
+    // Retornar una función de limpieza para eliminar el controlador de eventos beforeunload
+    return () => {
+      stopCamera()
+    };
   }, []);
 
   function setupDevices(videoInputDevices) {
@@ -64,7 +69,7 @@ export function Escanear() {
           // properly decoded qr code
           console.log("Found QR code!", result);
           setCode(result.text);
-          setIsModalOpen(true)
+          setIsModalOpen(true);
         }
 
         if (err) {
@@ -75,19 +80,33 @@ export function Escanear() {
     );
   }
 
-  useEffect((deviceId) => {
+  useEffect(() => {
     decodeContinuously(selectedDeviceId);
     console.log(`Started decode from camera with id ${selectedDeviceId}`);
-  }, []);
-  const showModal=()=>{
+    // Here is the cleanup function for this effect
+    return () => {
+      stopCamera();
+    };
+  }, [selectedDeviceId]);
+
+  function stopCamera() {
+    codeReader.stopContinuousDecode();
+    codeReader.reset();
+    console.log('Camera stopped.');
+  }
+
+  const showModal = () => {
     setIsModalOpen(true);
   }
-  const handleOk=()=>{
+
+  const handleOk = () => {
     setIsModalOpen(false);
   }
-  const handleCancel=()=>{
+
+  const handleCancel = () => {
     setIsModalOpen(false);
   }
+
   return (
     <main class="wrapper">
       <section className="container" id="demo-content">
@@ -97,14 +116,14 @@ export function Escanear() {
             id="sourceSelect"
             onChange={() => setSelectedDeviceId(sourceSelect.value)}
           >
-            { videoInputDevices.map((element) => (
+            {videoInputDevices.map((element) => (
               <option value={element.deviceId}>{element.label}</option>
             ))}
           </select>
         </div>
 
         <div>
-          <video id="video" width="70%" height="480px"/>
+          <video id="video" width="70%" height="480px" />
         </div>
         <Modal title="Escaner" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <Typography.Text strong>Result: </Typography.Text>
@@ -115,6 +134,6 @@ export function Escanear() {
           Reset
         </button>
       </section>
-    </main>
-  )
+    </main>
+  )
 }
