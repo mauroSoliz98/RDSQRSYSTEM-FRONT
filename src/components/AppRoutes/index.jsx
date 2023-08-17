@@ -5,6 +5,7 @@ import { Elementos } from '../../Pages/Elementos'
 import { Escanear } from '../../Pages/Escanear'
 import { Reportes } from '../../Pages/Reportes'
 import { Usuarios } from '../../Pages/Usuarios'
+import { ElementosListar } from '../../Pages/Registro_cajas/ElementosListar'
 
 
 export function AppRoutes() {
@@ -16,6 +17,7 @@ export function AppRoutes() {
             <Route path='/escanear' element={<Escanear/>}/>
             <Route path='/usuarios' element={<Usuarios/>}/>
             <Route path='/reportes' element={<Reportes/>}/>
+            <Route path='/elementos_listar' element={<ElementosListar/>}/>
         </Routes>
     </div>
   )
