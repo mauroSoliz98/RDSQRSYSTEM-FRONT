@@ -7,6 +7,7 @@ export function Elementos() {
   const [loading, setLoading] = useState(false)
   const [dataSource, setDataSource] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
   const [tableHeight, setTableHeight] = useState(0);
   const data = [
     {
@@ -76,7 +77,7 @@ export function Elementos() {
       render:(record)=>(
         <Space size="middle">
           <Tooltip title="Editar">
-              <Button type="link" icon={<EditOutlined />}/>
+              <Button type="link" icon={<EditOutlined />} onClick={()=>showModal('Editar Elmento')}/>
           </Tooltip>
           <Tooltip title="Eliminar">
               <Button style={{color:"red" }} type="ghost" icon={<DeleteOutlined />}/>
@@ -101,7 +102,8 @@ export function Elementos() {
     );
   };
 
-  const showModal=()=>{
+  const showModal=(title)=>{
+    setModalTitle(title);
     setIsModalOpen(true);
   }
   const handleOk=()=>{
@@ -128,7 +130,7 @@ export function Elementos() {
           expandable={{ expandedRowRender: isMobile ? expandedRowRender : undefined }}
         />
       </div>
-        <Modal title="Nueva Caja" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal title={modalTitle} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <h1>Hola mundo</h1>
       </Modal>
     </div>
