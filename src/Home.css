@@ -1,9 +1,11 @@
 .ContentContainer{
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    min-height: 280;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin: 24px 16px;
+  padding: 24px;
+  min-height: 280;
+  background-color: white;
     @media screen and (max-width: 768px) {
       /* Estilos para dispositivos móviles */
     margin: 5px 0px ;
@@ -17,31 +19,36 @@
     }
 }
 .logo{
-    display: flex;
-    align-items: start;
-    justify-content: flex-start;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
 }
 .icon{
-    width: 72px;
+  width: 72px;
 }
 .editable-row .ant-form-item-explain {
-    position: absolute;
-    top: 100%;
-    font-size: 12px;
+  position: absolute;
+  top: 100%;
+  font-size: 12px;
 }
 .AppHeader{
-    padding-inline: 0;
-    display: grid;
-    align-items: center;
-    grid-template-columns: auto 1fr;
+  padding-inline: 0;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  padding-right: 10px;
 }
 .UserContainer{
-    justify-self: end;
-    padding-right: 10px;
+  height: fit-content;
+  justify-self: end;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
 }
 .TopContainer{
-    display: grid;
-    align-items: center;
+  display: grid;
+  align-items: center;
 }
 @media (max-width: 480px) {
     .ant-table{

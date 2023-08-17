@@ -1,13 +1,23 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/fondoLogin.png'); 
+  background-size: cover;
+  overflow: hidden;
+}
+
+.App.loggedIn {
+  background-image: none;
+  display: block;
+  background-color: white;
+  color: black;
 }
 
 .logo {
   height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
