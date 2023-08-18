@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { EditOutlined, DeleteOutlined, DownloadOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, DownloadOutlined, EyeOutlined, PlusOutlined } from '@ant-design/icons';
 import { Input, Space, Button, Table, Col, Row, Modal, message, Tooltip } from 'antd';
 import { FormBoxes } from './FormBoxes';
 import TopButtons from '../TopButtons/TopButtons';
-
+import { Link, useLocation } from 'react-router-dom';
 const { Search } = Input;
 
 export function RegistroCajas() {
+  const location = useLocation();
+
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataSource, setDataSource] = useState([]);
@@ -74,6 +76,11 @@ export function RegistroCajas() {
         <Space size="middle">
           <Tooltip title="Editar">
             <Button type="link" icon={<EditOutlined />} onClick={() => showModal('Editar Caja')} />
+          </Tooltip>
+          <Tooltip title="Ver Elementos">
+            <Link to="/elementos_listar">
+              <Button style={{ color: "#292c32" }} type="ghost" icon={<EyeOutlined />} />
+            </Link>
           </Tooltip>
           <Tooltip title="Eliminar">
             <Button style={{ color: 'red' }} type="ghost" icon={<DeleteOutlined />} />
