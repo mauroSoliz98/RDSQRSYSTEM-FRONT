@@ -78,7 +78,7 @@ export function RegistroCajas() {
             <Button type="link" icon={<EditOutlined />} onClick={() => showModal('Editar Caja')} />
           </Tooltip>
           <Tooltip title="Ver Elementos">
-            <Link to="/elementos_listar">
+            <Link to="/home/elementos_listar">
               <Button style={{ color: "#292c32" }} type="ghost" icon={<EyeOutlined />} />
             </Link>
           </Tooltip>
