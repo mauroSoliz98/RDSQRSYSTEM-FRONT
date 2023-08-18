@@ -4,7 +4,7 @@ import imagenLogo from '../assets/Logo_company.jpeg'
 import './FormularioAnt.css'
 import {useNavigate} from 'react-router-dom'
 
-export function FormularioAnt({setUser}) {
+export function FormularioAnt() {
   const [nombre,setNombre] = useState("")
   const [password,setPassword] = useState("")
   const navigate = useNavigate()
@@ -15,12 +15,12 @@ export function FormularioAnt({setUser}) {
       setPassword(e.target.value)
   }
   const login = ()=>{
-    if(nombre==''|| password==''){
-      message.warning('Please enter password or user')
+    if (nombre === 'admin@dev.com' && password === '123') {
+      message.success('Login successful!');
+      navigate('/home');
+    } else {
+      message.error('Invalid credentials');
     }
-    message.success('Login Succesful!!')  
-    navigate('/registro_cajas')
-    setUser([nombre])
     
   }
   return (

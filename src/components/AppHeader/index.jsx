@@ -2,9 +2,15 @@ import React from 'react'
 import logo from '../../assets/Logo_company.jpeg'
 import { Avatar,Layout, Typography, Popover, Button} from 'antd'
 import {UserOutlined,LogoutOutlined} from '@ant-design/icons'
+import {useNavigate} from 'react-router-dom'
 const { Header } = Layout;
 
 export function AppHeader() {
+  const navigate = useNavigate()
+  const hadelLogout=()=>{
+    navigate('/')
+    console.log('Sesion cerrada');
+  }  
   const content = (
     <div>
       <Button  
@@ -15,6 +21,7 @@ export function AppHeader() {
                   width: 'fit-content'
                 }} 
         icon={<LogoutOutlined />}
+        onClick={hadelLogout}
       >
         Cerrra sesion
       </Button>

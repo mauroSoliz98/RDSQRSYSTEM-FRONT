@@ -8,6 +8,7 @@ import { TopNav } from './TopNav';
 import { PageContent } from './PageContent';
 import { SideMenu } from './SideMenu';
 import { AppFooter } from './AppFooter';
+import {Outlet} from 'react-router-dom'
 
 const { Content } = Layout;
 
@@ -26,7 +27,7 @@ function Home() {
         <Layout>
           <TopNav selectedSection={selectedSection} />
           <Content className='ContentContainer'>
-            <PageContent />
+            <Outlet/>
           </Content>
         </Layout>
       </Layout>

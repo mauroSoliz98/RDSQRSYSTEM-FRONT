@@ -17,7 +17,7 @@
     width: 100px;
     border-radius: 100%;
 }
-.MainContainer {
+.MainContainer { 
     display: grid;
     grid-template-columns: repeat(3,3fr);
   }
