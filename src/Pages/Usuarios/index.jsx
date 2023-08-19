@@ -143,7 +143,7 @@ export function Usuarios() {
         />
       </div>
 
-        <Modal title={modalTitle} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal  onOk={handleOk} width={1000} title={modalTitle} open={isModalOpen} footer={null} onCancel={handleCancel}>
         <FormUsers CancelButton={handleCancel}/>
       </Modal>
     </div>

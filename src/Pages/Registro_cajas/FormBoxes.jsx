@@ -17,10 +17,10 @@ export function FormBoxes() {
     <div>
         <Form layout='vertical' autoComplete='off'>
           <Form.Item name="Codigo" label="Codigo" rules={[{required: true}]}>
-            <Input placeholder="default size"  prefix={<LockOutlined />}/>
+            <Input placeholder="inserte contraseña"  prefix={<LockOutlined />}/>
           </Form.Item>
           <Form.Item name="NombreCaja" label="Nombre Caja" rules={[{required: true}]}>
-            <Input placeholder="default size" />
+            <Input placeholder="inserte nombre de caja" />
           </Form.Item>
           <Form.Item name="Ubicacion" label="Ubicación" rules={[{required: true}]}>
             <Select defaultValue="Zhejiang" options={options} />

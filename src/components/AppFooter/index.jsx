@@ -14,22 +14,22 @@ const { Sider } = Layout;
 
 const menuItems = [
   {
-    key: '/registro_cajas',
+    key: '/home',
     label: 'Registro de cajas',
     icon: <BoxPlotOutlined />,
   },
   {
-    key: '/elementos',
+    key: '/home/elementos',
     label: 'Elementos',
     icon: <ProfileOutlined />,
   },
   {
-    key: '/escanear',
+    key: '/home/escanear',
     label: 'Escanear',
     icon: <QrcodeOutlined />,
   },
   {
-    key: '/usuarios',
+    key: '/home/usuarios',
     label: 'Usuarios',
     icon: <TeamOutlined />,
   },

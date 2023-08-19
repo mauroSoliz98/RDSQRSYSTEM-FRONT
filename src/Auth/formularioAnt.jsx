@@ -3,6 +3,7 @@ import {Button,Form,Input, Typography, message} from 'antd'
 import imagenLogo from '../assets/Logo_company.jpeg'
 import './FormularioAnt.css'
 import {useNavigate} from 'react-router-dom'
+import App from '../App'
 
 export function FormularioAnt() {
   const [nombre,setNombre] = useState("")
@@ -15,7 +16,7 @@ export function FormularioAnt() {
       setPassword(e.target.value)
   }
   const login = ()=>{
-    if (nombre === 'admin@dev.com' && password === '123') {
+    if (nombre.length > 0 && password === '123') {
       message.success('Login successful!');
       navigate('/home');
     } else {

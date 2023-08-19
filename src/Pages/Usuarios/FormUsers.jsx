@@ -1,30 +1,44 @@
 import React, {useState, useEffect} from 'react'
 import {Input, Form, Checkbox, Row, Col, Button, Space} from 'antd'
 
-export function FormUsers({CancelButton}) {
+export function FormUsers({CancelButton, onOk}) {
     const [form] = Form.useForm();
 
   return (
     <div>
         <Form layout='vertical' autoComplete='off'form={form}>
+            <Row gutter={16}>
+                <Col>
             <Form.Item name="Correo" label="Correo" rules={[{required: true,type:'email', message:'Enter your email please'}]}>
-                <Input placeholder="default size" />
+                <Input placeholder="user@email.com" />
             </Form.Item>
+            </Col>
+            <Col>
             <Form.Item name="NombreUsuario" label="Nombre Usuario" rules={[{required: true}]}>
-                <Input placeholder="default size" />
+                <Input placeholder="nombre de usuario" />
             </Form.Item>
+            </Col>
+            <Col>
             <Form.Item name="Nombres" label="Nombre(s)" rules={[{required: true}]}>
-                <Input placeholder="default size"/>
+                <Input placeholder="nombre"/>
             </Form.Item>
+            </Col>
+            <Col>
             <Form.Item name="Apellidos" label="Apellido(s)" rules={[{required: true}]}>
-                <Input placeholder="default size" />
+                <Input placeholder="apellido" />
             </Form.Item>
+            </Col>
+            <Col>
             <Form.Item name="Telefono" label="Numero de Telefono (opcional)" rules={[{required: false}]}>
                 <Input placeholder="(+123) xxx-xxx-xx" />
             </Form.Item>
+            </Col>
+            </Row>
+            <Col>
             <Form.Item name="Contraseña" label="Contraseña" rules={[{required:true, message:'Please enter some password'}]}>
-                <Input.Password placeholder="Enter your password" />
+                <Input.Password placeholder="inserte contraseña" />
             </Form.Item>
+            </Col>
             <Form.Item name="Roles" label="Roles" rules={[{required:true}]}>
                 <Checkbox.Group>
                     <Row>
@@ -92,7 +106,7 @@ export function FormUsers({CancelButton}) {
                 </Checkbox.Group>
             </Form.Item>
             <Space>
-                <SubmitButton form = {form} />
+                <SubmitButton form = {form} onOk={onOk} />
                 <Button onClick={CancelButton}>Cancel</Button>
             </Space>
         </Form>
@@ -100,7 +114,7 @@ export function FormUsers({CancelButton}) {
   )
 }
 
-function SubmitButton({form}){
+function SubmitButton({form, onOk}){
     const [submittable, setSubmittable] = useState(false)
     const values = Form.useWatch([], form)
     useEffect(() => {
@@ -117,7 +131,7 @@ function SubmitButton({form}){
     }, [values])
     
     return(
-      <Button type='primary' htmlType='submmit' disabled={!submittable}>
+      <Button onClick={onOk} type='primary' htmlType='submmit' disabled={!submittable}>
         Guardar
       </Button>
     )

@@ -30,7 +30,7 @@ export function FormItems({CancelButton}) {
                 <Input.TextArea showCount maxLength={100}/>
             </Form.Item>
           <Form.Item name="Categoria" label="Categoria" rules={[{required: true}]}>
-            <Select defaultValue="Smartphones" options={options} />
+            <Select defaultValue="inserte una categoria" options={options} />
           </Form.Item>
             <Space>
                 <SubmitButton form = {form} />
