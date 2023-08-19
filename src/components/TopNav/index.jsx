@@ -23,6 +23,10 @@ export function TopNav({selectedSection}) {
       <Breadcrumb style={{margin: '16px 16px',}}>
         <Breadcrumb.Item>Inicio</Breadcrumb.Item>
         <Breadcrumb.Item>{selectedSection}</Breadcrumb.Item>
+        {location.pathname === '/home/elementos_listar' && (<Breadcrumb.Item>
+            {selectedSection} - CB98
+        </Breadcrumb.Item>
+  )}
       </Breadcrumb>
       </div>
       
