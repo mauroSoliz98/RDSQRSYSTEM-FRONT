@@ -41,6 +41,7 @@ const menuItems = [
 ];
 
 export function SideMenu({ onMenuSelect }) {
+
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const [selectedIconKey, setSelectedIconKey] = useState(menuItems[0].key); // Inicialmente, seleccionamos el primer icono
