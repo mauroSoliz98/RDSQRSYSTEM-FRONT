@@ -5,10 +5,11 @@ import './FormularioAnt.css'
 import {useNavigate} from 'react-router-dom'
 import App from '../App'
 
-export function FormularioAnt() {
+export function FormularioAnt({ setUser }) {
   const [nombre,setNombre] = useState("")
   const [password,setPassword] = useState("")
   const navigate = useNavigate()
+
   const handleNombreChange=(e)=>{
     setNombre(e.target.value)
   }
@@ -17,6 +18,7 @@ export function FormularioAnt() {
   }
   const login = ()=>{
     if (nombre.length > 0 && password === '123') {
+      setUser({ name: nombre });
       message.success('Login successful!');
       navigate('/home');
     } else {

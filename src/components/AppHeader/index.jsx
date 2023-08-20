@@ -1,44 +1,59 @@
-import React from 'react'
-import logo from '../../assets/Logo_company.jpeg'
-import { Avatar,Layout, Typography, Popover, Button} from 'antd'
-import {UserOutlined,LogoutOutlined} from '@ant-design/icons'
+import React, { useState } from 'react'
+import logo from '../../assets/Logo_company.png'
+import { Layout } from 'antd'
 import {useNavigate} from 'react-router-dom'
+import { MenuItems } from '../SideMenu/MenuItems'
+import { menuItems } from '../SideMenu/MenuItems'
+import { UserMenu } from './userMenu'
+import { useMediaQuery } from 'react-responsive';
+
 const { Header } = Layout;
 
-export function AppHeader() {
+export function AppHeader({ onMenuSelect}) {
   const navigate = useNavigate()
-  const hadelLogout=()=>{
-    navigate('/')
-    console.log('Sesion cerrada');
-  }  
-  const content = (
-    <div>
-      <Button  
-        style={{ 
-                  border:'none', 
-                  backgroundColor:'transparent',
-                  height: 'fit-content', 
-                  width: 'fit-content'
-                }} 
-        icon={<LogoutOutlined />}
-        onClick={hadelLogout}
-      >
-        Cerrra sesion
-      </Button>
-    </div>
-  )
+  const [selectedIconKey, setSelectedIconKey] = useState(menuItems[0].key); // Inicialmente, seleccionamos el primer icono
+
+  const handleMenuClick = (item) => {
+    const selectedItem = menuItems.find((menuItem) => menuItem.key === item.key);
+    onMenuSelect(selectedItem.label);
+    setSelectedIconKey(item.key); // Actualizamos el icono seleccionado
+    navigate(item.key);
+  };
+
+  const handleLogout = () => {
+    navigate('/');
+    console.log('Sesión cerrada');
+  }; 
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const appFooterStyles = {
+    display: 'flex',
+    justifyContent: 'space-between', // Espacio entre elementos
+    alignItems: 'center', // Alineación vertical
+    padding: '5px', // Espaciado interno
+    backgroundColor: '#001529',
+    color: 'red',
+    marginTop: '63px',
+  };
+
   return (
     <>
     <Header className='AppHeader'>
       <div className='logo'>
-          <img src={logo} alt="logotipo" className='icon' />
+          <img src={logo} alt="logotipo"/>
       </div>
-      <Popover style={{height: 'fit-content', width: 'fit-content'}} placement="bottomRight" arrow = {false} content={content} trigger={'click'}>
-        <Button className='UserContainer'>
-          <Avatar shape="square" size={30} icon={<UserOutlined />} />
-          <Typography.Text style={{ color: 'white', marginLeft: '10px' }}>Admin</Typography.Text>
-        </Button>
-      </Popover>
+      <div>
+      {isMobile && <MenuItems  
+          menuItems={menuItems} 
+          selectedIconKey={selectedIconKey} 
+          handleMenuClick={handleMenuClick} 
+          horizontal 
+        />}
+      </div>
+      <div>      
+        <UserMenu username='Admin' onLogout={handleLogout} />
+      </div>
   </Header>
 </>
   )

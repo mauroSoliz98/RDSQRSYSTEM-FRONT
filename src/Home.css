@@ -33,16 +33,17 @@
 }
 .AppHeader{
   padding-inline: 0;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+
   align-items: center;
   grid-template-columns: auto 1fr;
   padding-right: 10px;
-  margin-top: 63px;
+  /*margin-top: 63px;*/
 }
 .UserContainer{
+  display: flex;
   height: fit-content;
-  justify-self: end;
-  justify-content: center;
   align-items: center;
   background-color: transparent;
   border: none;

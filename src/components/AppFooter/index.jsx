@@ -1,47 +1,11 @@
 import React, { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  BoxPlotOutlined,
-  ProfileOutlined,
-  QrcodeOutlined,
-  TeamOutlined,
-  ScheduleTwoTone,
-} from '@ant-design/icons';
-import { Layout, Menu, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
-const { Sider } = Layout;
-
-const menuItems = [
-  {
-    key: '/home',
-    label: 'Registro de cajas',
-    icon: <BoxPlotOutlined />,
-  },
-  {
-    key: '/home/elementos',
-    label: 'Elementos',
-    icon: <ProfileOutlined />,
-  },
-  {
-    key: '/home/escanear',
-    label: 'Escanear',
-    icon: <QrcodeOutlined />,
-  },
-  {
-    key: '/home/usuarios',
-    label: 'Usuarios',
-    icon: <TeamOutlined />,
-  },
-  /*{
-    key: '/reportes',
-    label: 'Reportes',
-    icon: <ScheduleTwoTone />,
-  },*/
-];
+import { MenuItems } from '../SideMenu/MenuItems';
+import { menuItems } from '../SideMenu/MenuItems';
+import logo from '../../assets/Logo_company.jpeg';
+import { UserMenu } from '../AppHeader/userMenu';
 
 export function AppFooter({ onMenuSelect }) {
-  const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const [selectedIconKey, setSelectedIconKey] = useState(menuItems[0].key); // Inicialmente, seleccionamos el primer icono
 
@@ -52,30 +16,38 @@ export function AppFooter({ onMenuSelect }) {
     navigate(item.key);
   };
 
+  const handleLogout = () => {
+    navigate('/');
+    console.log('Sesión cerrada');
+  }; 
+
+  const appFooterStyles = {
+    display: 'flex',
+    justifyContent: 'space-between', // Espacio entre elementos
+    alignItems: 'center', // Alineación vertical
+    padding: '5px', // Espaciado interno
+    backgroundColor: '#001529',
+    color: 'red',
+    marginTop: '63px',
+  };
+
   return (
-    <Sider
-    className='app-menu'
-    width={'100vw'}
-      theme='light'
-      trigger={null}
-      collapsible
-      collapsed={collapsed}
-      style={{display: 'flex',justifyContent: 'center'}}
-    >
-      
-      <Menu
-        onClick={handleMenuClick}
-        theme="light"
-        mode="horizontal" // Cambia el modo según el estado colapsado
-        selectedKeys={[selectedIconKey]}
-      >
-        {menuItems.map((item) => (
-          <Menu.Item key={item.key} icon={item.icon}>
-          </Menu.Item>
-        ))}
-      </Menu>
- 
-    </Sider>
+    <div style={appFooterStyles} className='app-menu'  >
+       <div>
+          <img src={logo} alt="logotipo" className='icon' />
+      </div>
+      <div>
+        <MenuItems  
+          menuItems={menuItems} 
+          selectedIconKey={selectedIconKey} 
+          handleMenuClick={handleMenuClick} 
+          horizontal 
+        />
+      </div>
+      <div>      
+        <UserMenu username='Admin' onLogout={handleLogout} />
+      </div>
+    </div>
   );
 }
 

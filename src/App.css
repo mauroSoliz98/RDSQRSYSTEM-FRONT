@@ -1,26 +1,28 @@
 .App{
   display: flex;
   justify-content: center;
+  background: url('./assets/fondoLogin.png'); 
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: url('./assets/fondoLogin.png'); 
   background-size: cover;
   overflow: hidden;
 }
 
 .App.loggedIn {
   background-image: none;
-  display: block;
   background-color: white;
+  display: block;
   color: black;
 }
 
-.logo {
+
+
+/*.logo {
   height: 6em;
   will-change: filter;
   transition: filter 300ms;
-}
+}*/
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

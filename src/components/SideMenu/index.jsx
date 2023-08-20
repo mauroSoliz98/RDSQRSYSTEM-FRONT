@@ -1,44 +1,13 @@
 import React, { useState } from 'react';
 import {
-  MenuFoldOutlined,
-  BoxPlotOutlined,
-  ProfileOutlined,
-  QrcodeOutlined,
-  TeamOutlined,
-  ScheduleTwoTone,
+  MenuFoldOutlined
 } from '@ant-design/icons';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { MenuItems } from './MenuItems';
+import { menuItems } from './MenuItems'; // Importa el array menuItems
 
 const { Sider } = Layout;
-
-const menuItems = [
-  {
-    key: '/home',
-    label: 'Registro de cajas',
-    icon: <BoxPlotOutlined />,
-  },
-  {
-    key: '/home/elementos',
-    label: 'Elementos',
-    icon: <ProfileOutlined />,
-  },
-  {
-    key: '/home/escanear',
-    label: 'Escanear',
-    icon: <QrcodeOutlined />,
-  },
-  {
-    key: '/home/usuarios',
-    label: 'Usuarios',
-    icon: <TeamOutlined />,
-  },
-  /*{
-    key: '/reportes',
-    label: 'Reportes',
-    icon: <ScheduleTwoTone />,
-  },*/
-];
 
 export function SideMenu({ onMenuSelect }) {
 
@@ -71,18 +40,7 @@ export function SideMenu({ onMenuSelect }) {
           height: 64,
         }}
       />
-      <Menu
-        onClick={handleMenuClick}
-        theme="light"
-        mode="inline" // Cambia el modo según el estado colapsado
-        selectedKeys={[selectedIconKey]}
-      >
-        {menuItems.map((item) => (
-          <Menu.Item key={item.key} icon={item.icon}>
-            {item.label}
-          </Menu.Item>
-        ))}
-      </Menu>
+      <MenuItems menuItems={menuItems} selectedIconKey={selectedIconKey} handleMenuClick={handleMenuClick} />
     </Sider>
   );
 }

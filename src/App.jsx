@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css'
 import { FormularioAnt } from './Auth/formularioAnt'
 import Home from './components/Home'
 import { AppRoutes } from './components/AppRoutes'
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
+
+    // Este efecto se ejecutará cada vez que 'user' cambie su valor
+    useEffect(() => {
+      console.log("User array changed:", user);
+    }, [user]);
+
   return(
-    <div className={`App ${user.length > 0 ? 'loggedIn' : ''}`}>
-      <AppRoutes />
+    <div className={`App ${user ? 'loggedIn' : ''}`}>
+      <AppRoutes  user={user} setUser={setUser} />
     </div>
     )
   }
