@@ -6,7 +6,7 @@ import Home from './components/Home'
 import { AppRoutes } from './components/AppRoutes'
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
 
     // Este efecto se ejecutará cada vez que 'user' cambie su valor
     useEffect(() => {
@@ -14,7 +14,7 @@ function App() {
     }, [user]);
 
   return(
-    <div className={`App ${user ? 'loggedIn' : ''}`}>
+    <div className={`App ${user.length > 0 ? 'loggedIn' : ''}`}>
       <AppRoutes  user={user} setUser={setUser} />
     </div>
     )

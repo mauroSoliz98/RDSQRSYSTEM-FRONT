@@ -4,9 +4,7 @@ import { Layout } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { AppHeader } from './AppHeader';
 import { TopNav } from './TopNav';
-import { PageContent } from './PageContent';
 import { SideMenu } from './SideMenu';
-import { AppFooter } from './AppFooter';
 import {Outlet} from 'react-router-dom'
 
 const { Content } = Layout;
@@ -14,7 +12,6 @@ const { Content } = Layout;
 function Home() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Define el ancho máximo para la vista móvil
 
-  const [collapsed, setCollapsed] = useState(false);
   const [selectedSection, setSelectedSection] = useState('Registro de cajas'); // Inicializa con el label
 
   return (
