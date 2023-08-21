@@ -1,6 +1,6 @@
 .App{
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   background: url('./assets/fondoLogin.png'); 
   align-items: center;
   width: 100vw;
@@ -10,7 +10,7 @@
 }
 
 .App.loggedIn {
-  background-image: none;
+  background: none;
   background-color: white;
   display: none;
   color: black;
